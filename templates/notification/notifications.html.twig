@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="card">
+        {% if notifications|length %}
+        <div class="card-body">
+            <h5>Unread notifications</h5>
+        </div>
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <a class="btn btn-block btn-default btn-link btn-outline-info"
+                   href="{{ path('notification_acknowledge_all') }}">
+                    Mark all as read
+                </a>
+            </li>
+            {% for notification in notifications %}
+                <li class="list-group-item">
+                    <a href="{{ path('notification_acknowledge', {'id': notification.id}) }}"
+                       class="btn btn-sm btn-primary float-right">
+                        OK
+                    </a>
+
+                    {% if notification is like %}
+                       <a href="{{ path('micro_post_user', {'username': notification.likedBy.username}) }}">{{ notification.likedBy.username==app.user.username?'You':notification.likedBy.username }}</a>
+                        {{ notification.likedBy.username==app.user.username?'like your':'likes your' }}
+                        <a href="{{ path('micro_post_post', {'id': notification.microPost.id}) }}">post</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="card-body">
+            <h5>You do not have Notifications. </h5>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

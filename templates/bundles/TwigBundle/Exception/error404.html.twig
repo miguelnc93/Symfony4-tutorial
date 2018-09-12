@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}Error!{% endblock %}
+{% block body %}
+    <h4>Ejemplo de error</h4>
+    <p>{{ status_text }}</p>
+    <p>{{ status_code }}</p>
+
+
+    {# GLOBAL VARIABLES #}
+
+    <p>Env: {{ app.environment }}</p>
+    {#<p>User: {{ app.user }}</p>#}
+    <p>Request: {{ app.request }}</p>
+    <p>Session started {{ app.session.isStarted() }}</p>
+    <p>Debug {{ app.debug }}</p>
+{% endblock %}

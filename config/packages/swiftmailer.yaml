@@ -1,0 +1,8 @@
+swiftmailer:
+    url: '%env(MAILER_URL)%'
+    spool: { type: 'memory' }
+    # E-mail spooling
+    # https://www.udemy.com/learn-symfony-4-hands-on-creating-a-real-world-application/learn/v4/t/lecture/10199952?start=0
+#    spool:
+#        type: file
+#        path: '%kernel.project_dir%/var/spool'
